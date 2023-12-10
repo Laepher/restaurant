@@ -2,10 +2,9 @@ import { getAuthSession } from "@/utils/auth";
 import { prisma } from "@/utils/connect";
 import { NextRequest, NextResponse } from "next/server";
 
-//fetch products
+//fetch orders
 export const GET = async (req: NextRequest) => {
   const session = await getAuthSession();
-
   if (session) {
     try {
       if (session.user.isAdmin) {
@@ -17,11 +16,10 @@ export const GET = async (req: NextRequest) => {
           userEmail: session.user.email!,
         },
       });
-      return new NextResponse(JSON.stringify(orders), { status: 200 });
     } catch (err) {
       console.log(err);
       return new NextResponse(
-        JSON.stringify({ message: "Something went wrong!" }),
+        JSON.stringify({ message: "Something went wrong" }),
         { status: 500 }
       );
     }

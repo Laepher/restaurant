@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Menu from './Menu'
 import Carticon from './Carticon'
+import UserLinks from './UserLinks'
 
 const Navbar = () => {
   //temp
@@ -26,11 +27,7 @@ const Navbar = () => {
           </svg>
           <span>0123 45667 8910</span>
         </div>
-        {!user ? (
-          <Link href="/login">Login</Link>
-        ) : (
-          <Link href="/orders">Orders</Link>
-        )}
+        <UserLinks/>
         <Carticon />
       </div>
     </div>
